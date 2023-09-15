@@ -66,5 +66,25 @@ export default function initialLoad(){
     navbar.appendChild(addToDoProject);
     addToDoProject.classList.add("add-button");
 
+
+    const myModal = document.createElement("div");
+    myModal.setAttribute('id',"myModal");
+    myModal.classList.add("modal");
+
+    startView.appendChild(myModal);
+    
+    const myModalContent = document.createElement("div");
+    myModalContent.classList.add("modal-content");
+    myModal.appendChild(myModalContent);
+    const span = document.createElement("span");
+    span.classList.add("close");
+    span.innerText="X";
+    myModalContent.appendChild(span);
+
+
+
+
+    
+
     return startView;
 }

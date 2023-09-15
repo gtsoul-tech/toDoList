@@ -7,6 +7,7 @@ module.exports = {
     task: './src/task.js',
     initialLoad: './src/initialLoad.js',
     taskLoad: './src/taskLoad.js',
+    formLoad: './src/formLoad.js',
   },
   devtool: 'inline-source-map',
   plugins: [
