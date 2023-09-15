@@ -1,4 +1,4 @@
-import 'taskCss.css';
+import './taskCss.css';
 
 export default function taskLoad(task){
     const taskDOM = document.createElement('div');
