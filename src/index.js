@@ -9,5 +9,7 @@ todo1.title = "titlos";
 console.log(todo1.title);
 //console.log(taskLoad(todo1));
 
+
+
 document.body.appendChild(initialLoad());
 document.body.appendChild(taskLoad(todo1));

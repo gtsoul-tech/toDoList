@@ -23,21 +23,29 @@ export default function initialLoad(){
     const navbar =document.createElement('div');
     navbar.classList.add("navbar");
 
-    const home = document.createElement('div');
-    home.classList.add("navbar-button");
-    home.textContent="Home";
-    const today = document.createElement('div');
-    today.classList.add("navbar-button");
-    today.textContent="Today";
-    const week = document.createElement('div');
-    week.textContent="Week";
-    week.classList.add("navbar-button");
-    const projects = document.createElement('div');
-    projects.textContent="Projects";
-    projects.classList.add("navbar-button");
-    const notes = document.createElement('div');
-    notes.textContent="Notes";
-    notes.classList.add("navbar-button");
+    const data = {
+        "Home": true,
+        "Today": false,
+        "Week": false,
+        "Projects": false,
+        "Notes": false,
+    }
+    for (let key in data) {
+        let label = document.createElement("label");
+        label.innerText = key;
+        label.setAttribute('for',key);
+        let input = document.createElement("input");
+        input.type = "radio";
+        input.name = "state";
+        input.setAttribute("value",key);
+        input.setAttribute('id',key);
+        input.classList.add("navbar-button");
+        
+        navbar.appendChild(input);
+        navbar.appendChild(label);
+    }
+
+
 
 
 
@@ -50,13 +58,13 @@ export default function initialLoad(){
     startView.appendChild(content);
     content.appendChild(navbar);
     content.appendChild(todos);
+
     
-    navbar.appendChild(home);
-    navbar.appendChild(today);
-    navbar.appendChild(week);
-    navbar.appendChild(projects);
-    navbar.appendChild(notes);
-    
+
+    const addToDoProject = document.createElement('div');
+    addToDoProject.textContent="+";
+    navbar.appendChild(addToDoProject);
+    addToDoProject.classList.add("add-button");
 
     return startView;
 }

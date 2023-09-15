@@ -9,7 +9,6 @@ body{
     justify-content: center;
     border-style: solid;
     border-color: aquamarine;
-    border-radius: 30px;
 }
 .svg{
     width: 1em;
@@ -28,8 +27,9 @@ body{
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    border-right: 2px solid rgb(0, 0, 0);
-    border-radius: 20px;
+    border-right: 0.5px solid rgb(0, 0, 0);
+    height: 100%;
+    background-color: rgb(177, 177, 177);
 }
 .navbar-button:hover, .navbar-button:active{
     font-size: 1rem;
@@ -44,3 +44,34 @@ body{
     width: 20px;
     height: 30px;
 }
+
+.add-button{
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 3rem;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    text-align: center;
+    background-color: bisque;
+    margin: 10px;
+    align-self: flex-start;
+}
+
+label {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.navbar input[type="radio"]{
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+input[type="radio"]:checked+label{ 
+    font-weight: bold; 
+} 
+input[type="radio"]:checked+label::before{ 
+    content:"//";
+} 
