@@ -8,6 +8,10 @@ module.exports = {
     initialLoad: './src/initialLoad.js',
     taskLoad: './src/taskLoad.js',
     formLoad: './src/formLoad.js',
+    taskForm: './taskForm.js',
+    projectForm: './projectForm.js',
+    noteForm: './noteForm.js',
+    EventListeners: './EventListeners.js',
   },
   devtool: 'inline-source-map',
   plugins: [

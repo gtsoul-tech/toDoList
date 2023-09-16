@@ -1,7 +1,7 @@
 import createTask from "./task";
 import './style.css';
 import Svg from './notebook.svg';
-
+import formLoad from './formLoad';
 export default function initialLoad(){
     const startView = document.createElement('div');
     
@@ -35,6 +35,9 @@ export default function initialLoad(){
         label.innerText = key;
         label.setAttribute('for',key);
         let input = document.createElement("input");
+        if(data[key] == true){
+            input.checked=true;
+        }
         input.type = "radio";
         input.name = "state";
         input.setAttribute("value",key);
@@ -44,7 +47,7 @@ export default function initialLoad(){
         navbar.appendChild(input);
         navbar.appendChild(label);
     }
-
+    
 
 
 
@@ -84,7 +87,7 @@ export default function initialLoad(){
 
 
 
-    
+
 
     return startView;
 }
