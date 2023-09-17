@@ -3,7 +3,10 @@ import taskForm from './taskForm';
 import projectForm from './projectForm';
 import noteForm from './noteForm';
 import createTask from "./task";
-
+import storageAvailable from "./storageAvailable";
+import taskLoad from "./taskLoad";
+import createNote from "./note";
+import noteLoad from "./noteLoad";
 export default function EventListeners(){
 
     let modal = document.getElementById("myModal");
@@ -47,53 +50,37 @@ export default function EventListeners(){
         })
     });
 
+    const nav = document.querySelectorAll("input[name=\"state\"]");
+    nav.forEach((currentValue, currentIndex, listObj)=> {
+        currentValue.addEventListener("click",(e)=>{
+            if(e.currentTarget.checked == true){
+                const todos = document.querySelector(".todos");
+                todos.querySelectorAll('*').forEach(n => n.remove());
 
+                switch(e.currentTarget.value) {
+                    case "Projects":
+                        break;
+                    case "Notes":
+                        let noteList = JSON.parse(localStorage.getItem('noteList') || "[]");
+                        for (let i = 0; i < noteList.length; i++) {
+                            let note = createNote(noteList[i].title,noteList[i].details);
+                            todos.appendChild(noteLoad(note));
+                        }
+                        break;
+                    default:
+                        let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
+                        for (let i = 0; i < taskList.length; i++) {
+                            if(e.currentTarget.value == taskList[i].project){
+                                let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,"no");
+                                todos.appendChild(taskLoad(task));
+                            }
+                        }
 
-    const form= document.getElementById("myFormTask");
-    //emeida edw
-    form.addEventListener("submit", storeTask,false);
-    function storeTask(event){
-        event.preventDefault();
-        if(storageAvailable("localStorage")) {
-            const data = new FormData(form);
-            for (const [name,value] of data) {
-                let task ={};
-                data.forEach((value, key) => task[key] = value);
-                localStorage.setItem('task', JSON.stringify(data));
+                }
+                //einai notes h project
+                // otan kanw add project na ftiaxnw to modalnav ksana
             }
-            
-            modal.style.display = "none";
-            form.reset();
-        }else {
-            console.log("Local storage doesnt work");
-        }
-    }
+        })
+    });
 
 }
-
-function storageAvailable(type) {
-    let storage;
-    try {
-      storage = window[type];
-      const x = "__storage_test__";
-      storage.setItem(x, x);
-      storage.removeItem(x);
-      return true;
-    } catch (e) {
-      return (
-        e instanceof DOMException &&
-        // everything except Firefox
-        (e.code === 22 ||
-          // Firefox
-          e.code === 1014 ||
-          // test name field too, because code might not be present
-          // everything except Firefox
-          e.name === "QuotaExceededError" ||
-          // Firefox
-          e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-        // acknowledge QuotaExceededError only if there's something already stored
-        storage &&
-        storage.length !== 0
-      );
-    }
-  }

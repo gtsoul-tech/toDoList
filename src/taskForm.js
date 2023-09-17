@@ -1,5 +1,5 @@
 import './form.css';
-
+import storageAvailable from './storageAvailable';
 export default function taskForm(){
 
     const form = document.createElement('form');
@@ -52,6 +52,8 @@ export default function taskForm(){
         }
         input.type = "radio";
         input.name = "priority";
+        input.required = true;
+        
         input.setAttribute("value",key);
         input.setAttribute('id',key);
         input.classList.add("navbar-button");
@@ -63,6 +65,34 @@ export default function taskForm(){
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
     form.appendChild(submit);
+
+
+    //emeida edw
+    form.addEventListener("submit", storeTask,false);
+    function storeTask(event){
+        event.preventDefault();
+        if(storageAvailable("localStorage")) {
+            const data = new FormData(form);
+            let task ={};
+            for (const [name,value] of data) {
+                
+                data.forEach((value, key) => task[key] = value);
+                
+            }
+            let selected = document.querySelector('input[name="state"]:checked');
+                task["project"]= selected.value;
+
+                let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
+                taskList.push(task);
+                localStorage.setItem('taskList', JSON.stringify(taskList));
+            let modal = document.getElementById("myModal");
+            modal.style.display = "none";
+            form.reset();
+        }else {
+            console.log("Local storage doesnt work");
+        }
+    }
+
 
     return form;
 }

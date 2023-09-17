@@ -5,13 +5,16 @@ module.exports = {
   entry: {
     index: './src/index.js',
     task: './src/task.js',
+    note: './src/note.js',
     initialLoad: './src/initialLoad.js',
     taskLoad: './src/taskLoad.js',
     formLoad: './src/formLoad.js',
-    taskForm: './taskForm.js',
-    projectForm: './projectForm.js',
-    noteForm: './noteForm.js',
-    EventListeners: './EventListeners.js',
+    taskForm: './src/taskForm.js',
+    projectForm: './src/projectForm.js',
+    noteForm: './src/noteForm.js',
+    EventListeners: './src/EventListeners.js',
+    storageAvailable: './src/storageAvailable.js',
+
   },
   devtool: 'inline-source-map',
   plugins: [

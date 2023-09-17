@@ -28,24 +28,33 @@ export default function initialLoad(){
         "Today": false,
         "Week": false,
         "Projects": false,
-        "Notes": false,
     }
+
+    let projectList = JSON.parse(localStorage.getItem('projectList') || "[]");
+    for (let i = 0; i < projectList.length; i++) {
+        data[projectList[i].title] = false;
+    }
+    data["Notes"]=false;
+
     for (let key in data) {
         let label = document.createElement("label");
         label.innerText = key;
         label.setAttribute('for',key);
-        let input = document.createElement("input");
-        if(data[key] == true){
-            input.checked=true;
-        }
-        input.type = "radio";
-        input.name = "state";
-        input.setAttribute("value",key);
-        input.setAttribute('id',key);
-        input.classList.add("navbar-button");
-        
+        if(key!="Projects"){
+            let input = document.createElement("input");
+            if(data[key] == true){
+                input.checked=true;
+            }
+            input.type = "radio";
+            input.name = "state";
+            input.setAttribute("value",key);
+            input.setAttribute('id',key);
+            input.classList.add("navbar-button");
+            
         navbar.appendChild(input);
+        }
         navbar.appendChild(label);
+        
     }
     
 
@@ -83,9 +92,6 @@ export default function initialLoad(){
     span.classList.add("close");
     span.innerText="X";
     myModalContent.appendChild(span);
-
-
-
 
 
 
