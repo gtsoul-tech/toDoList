@@ -71,16 +71,16 @@ export default function EventListeners(){
                         let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
                         for (let i = 0; i < taskList.length; i++) {
                             if(e.currentTarget.value == taskList[i].project){
-                                let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,"no");
+                                let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,taskList[i].checklist,taskList[i].project);
                                 todos.appendChild(taskLoad(task));
                             }
                         }
 
                 }
-                //einai notes h project
-                // otan kanw add project na ftiaxnw to modalnav ksana
+                
             }
         })
     });
+
 
 }

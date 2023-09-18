@@ -1,3 +1,3 @@
-export default function createTask(title,description,dueDate,priority,checklist){
-    return {title,description,dueDate,priority,checklist};
+export default function createTask(title,details,dueDate,priority,checklist,project){
+    return {title,details,dueDate,priority,checklist,project};
 }

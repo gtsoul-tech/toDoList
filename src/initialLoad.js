@@ -2,6 +2,7 @@ import createTask from "./task";
 import './style.css';
 import Svg from './notebook.svg';
 import formLoad from './formLoad';
+import taskLoad from "./taskLoad";
 export default function initialLoad(){
     const startView = document.createElement('div');
     
@@ -93,7 +94,16 @@ export default function initialLoad(){
     span.innerText="X";
     myModalContent.appendChild(span);
 
-
-
+    
+    //todos.querySelectorAll('*').forEach(n => n.remove());
+    let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
+    
+    for (let i = 0; i < taskList.length; i++) {
+        if(taskList[i].project == "Home"){
+            console.log("taskList");
+            let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,taskList[i].checklist,taskList[i].project);
+            todos.appendChild(taskLoad(task));
+        }
+    }
     return startView;
 }

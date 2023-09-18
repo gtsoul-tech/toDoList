@@ -41,7 +41,7 @@ export default function noteForm(){
             let noteList = JSON.parse(localStorage.getItem('noteList') || "[]");
             noteList.push(note);
             localStorage.setItem('noteList', JSON.stringify(noteList));
-
+            initialLoad();
             let modal = document.getElementById("myModal");
             modal.style.display = "none";
             form.reset();

@@ -1,5 +1,7 @@
 import './form.css';
 import storageAvailable from './storageAvailable';
+import initialLoad from './initialLoad';
+import taskLoad from './taskLoad';
 export default function taskForm(){
 
     const form = document.createElement('form');
@@ -75,16 +77,15 @@ export default function taskForm(){
             const data = new FormData(form);
             let task ={};
             for (const [name,value] of data) {
-                
                 data.forEach((value, key) => task[key] = value);
-                
             }
             let selected = document.querySelector('input[name="state"]:checked');
-                task["project"]= selected.value;
-
-                let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
-                taskList.push(task);
-                localStorage.setItem('taskList', JSON.stringify(taskList));
+            task.project= selected.value;
+            task.checklist= "no";
+            
+            let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
+            taskList.push(task);
+            localStorage.setItem('taskList', JSON.stringify(taskList));
             let modal = document.getElementById("myModal");
             modal.style.display = "none";
             form.reset();

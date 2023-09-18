@@ -34,6 +34,7 @@ export default function projectForm(){
             let projectList = JSON.parse(localStorage.getItem('projectList') || "[]");
             projectList.push(project);
             localStorage.setItem('projectList', JSON.stringify(projectList));
+            initialLoad();
             let modal = document.getElementById("myModal");
             modal.style.display = "none";
             form.reset();
