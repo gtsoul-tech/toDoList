@@ -22,3 +22,44 @@
 .complete{
     opacity: 0.5;
 }
+.details{
+    color: black;
+    font-weight: bold;
+}
+.detailsContent{
+    display: flex;
+    margin: 20px;
+}
+
+.greenPriority{
+    padding:10px;
+    color: green;
+    border: 1px solid green;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+.orangePriority{
+    padding:10px;
+    color: orange;
+    border: 1px solid orange;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+.redPriority{
+    padding:10px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+.editButton{
+    color: black;
+    font-weight: bold;
+}
+.delete{
+    width: 1em;
+    height: 1em;
+}

@@ -14,7 +14,8 @@ module.exports = {
     noteForm: './src/noteForm.js',
     EventListeners: './src/EventListeners.js',
     storageAvailable: './src/storageAvailable.js',
-
+    editTaskForm: './src/editTaskForm.js',
+    deleteTask: './src/deleteTask.js',
   },
   devtool: 'inline-source-map',
   plugins: [

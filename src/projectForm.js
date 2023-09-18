@@ -1,5 +1,6 @@
 import './form.css';
 import storageAvailable from './storageAvailable';
+import initialLoad from './initialLoad';
 export default function projectForm(){
 
     const form = document.createElement('form');

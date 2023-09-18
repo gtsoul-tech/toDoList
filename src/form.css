@@ -41,3 +41,6 @@ form{
     display: flex;
     flex-direction: column;
 }
+.modalnavbar{
+    font-size: 1em;
+}

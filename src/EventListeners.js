@@ -15,24 +15,41 @@ export default function EventListeners(){
     span.onclick = function() {
         modal.style.display = "none";
     }
+    
+    
+
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-    modal_content.appendChild(formLoad());
-
-
     const add_button = document.querySelector(".add-button");
     add_button.addEventListener("click", (e)=> {
+        modal_content.querySelectorAll('*').forEach(n => n.remove());
+        modal_content.appendChild(formLoad());
         modal.style.display = "block";
     });
-
+/*
     const modalNav = document.querySelectorAll("input[name=\"formKind\"]");
     modalNav.forEach((currentValue, currentIndex, listObj)=> {
         currentValue.addEventListener("click",(e)=>{
             if(e.currentTarget.checked == true){
                 const form = document.getElementsByClassName("formPost")[0];
+                
+                const myModal = document.createElement("div");
+                myModal.setAttribute('id',"myModal");
+                myModal.classList.add("modal");
+                myModal.querySelectorAll('*').forEach(n => n.remove());
+                startView.appendChild(myModal);
+                
+                const myModalContent = document.createElement("div");
+                myModalContent.classList.add("modal-content");
+                myModal.appendChild(myModalContent);
+                const span = document.createElement("span");
+                span.classList.add("close");
+                span.innerText="X";
+                myModalContent.appendChild(span);
+                
                 switch(e.currentTarget.value) {
                     case "ToDo": 
                         form.replaceWith(taskForm());
@@ -48,7 +65,7 @@ export default function EventListeners(){
                 }
             }
         })
-    });
+    });*/
 
     const nav = document.querySelectorAll("input[name=\"state\"]");
     nav.forEach((currentValue, currentIndex, listObj)=> {

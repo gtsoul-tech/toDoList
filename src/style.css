@@ -99,6 +99,8 @@ input[type="radio"]:checked+label::before{
     border: 10px solid #888;
     border-radius: 20px;
     width: 80%; /* Could be more or less, depending on screen size */
+    min-width: 100px;
+    min-height: 200px;
   }
   
   /* The Close Button */
@@ -115,3 +117,5 @@ input[type="radio"]:checked+label::before{
     text-decoration: none;
     cursor: pointer;
   }
+
+

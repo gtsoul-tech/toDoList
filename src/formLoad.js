@@ -2,12 +2,46 @@ import './form.css';
 import taskForm from './taskForm';
 import projectForm from './projectForm';
 import noteForm from './noteForm';
-export default function formLoad(form){
+export default function formLoad(){
+    
     const content = document.createElement('div');
     content.classList.add("content");
+    content.appendChild(createNavBar());
+    content.appendChild(taskForm());
+
+
     
+    const modalNav = content.querySelectorAll("input[name=\"formKind\"]");
+    modalNav.forEach((currentValue, currentIndex, listObj)=> {
+        currentValue.addEventListener("click",(e)=>{
+            if(e.currentTarget.checked == true){
+                const form = document.getElementsByClassName("formPost")[0];
+                //modal_content.querySelectorAll('*').forEach(n => n.remove());
+                
+                switch(e.currentTarget.value) {
+                    case "ToDo": 
+                        form.replaceWith(taskForm());
+                        break;
+                    case "Project":
+                        form.replaceWith(projectForm());
+                        break;
+                    case "Note":
+                        form.replaceWith(noteForm());
+                        break;
+                    default:
+                        form.replaceWith(taskForm());
+                }
+            }
+        });
+    });
+
+    return content;
+}
+
+function createNavBar(){
     const navbar = document.createElement('div');
     navbar.classList.add("navbar");
+    
     const data = {
         "ToDo": true,
         "Project": false,
@@ -31,7 +65,5 @@ export default function formLoad(form){
         navbar.appendChild(input);
         navbar.appendChild(label);
     }
-    content.appendChild(navbar);
-    content.appendChild(taskForm());
-    return content;
+    return navbar;
 }

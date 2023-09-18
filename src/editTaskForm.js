@@ -3,23 +3,21 @@ import storageAvailable from './storageAvailable';
 import initialLoad from './initialLoad';
 import taskLoad from './taskLoad';
 import createTask from './task';
-export default function taskForm(){
+export default function editTaskForm(task){
 
     const form = document.createElement('form');
-    form.setAttribute("id", "myFormTask");
-    form.classList.add("formPost");
+    form.setAttribute("id", "editMyFormTask");
+    form.classList.add("editFormPost");
     form.setAttribute("method", "post");
     form.setAttribute("action", "");
     const title = document.createElement("input");
     title.setAttribute("type", "text");
-    title.required=true;
     title.setAttribute("name", "title");
     title.setAttribute("placeholder", "Title:Make bills");
     const details = document.createElement("input");
     details.setAttribute("type", "text");
     details.setAttribute("name", "details");
     details.setAttribute("placeholder", "Details:e.g power,groceries");
-    details.required=true;
     const dueDate = document.createElement("input");
     const labelDueDate = document.createElement("label");
     labelDueDate.setAttribute("for","dueDate");
@@ -28,9 +26,8 @@ export default function taskForm(){
     dueDate.setAttribute("type", "date");
     dueDate.setAttribute("name", "dueDate");
     dueDate.setAttribute("id", "dueDate");
-    dueDate.setAttribute("value", "2023-10-02");
-    dueDate.setAttribute("min", "2023-09-02");
-    dueDate.setAttribute("max", "2024-09-02");
+    dueDate.setAttribute("min", task.dueDate);
+    dueDate.setAttribute("max", "2030-09-02");
     
     form.appendChild(title);
     form.appendChild(details);
@@ -40,7 +37,7 @@ export default function taskForm(){
     
 
     const priority = {
-        "Low": true,
+        "Low": false,
         "Medium": false,
         "High": false,
     }
@@ -55,7 +52,6 @@ export default function taskForm(){
         }
         input.type = "radio";
         input.name = "priority";
-        input.required = true;
         
         input.setAttribute("value",key);
         input.setAttribute('id',key);
@@ -71,43 +67,45 @@ export default function taskForm(){
 
 
     //emeida edw
-    form.addEventListener("submit", storeTask,false);
-    function storeTask(event){
+    form.addEventListener("submit", editTask,false);
+    function editTask(event){
         event.preventDefault();
         if(storageAvailable("localStorage")) {
             const data = new FormData(form);
-            let task ={};
-            for (const [name,value] of data) {
-                data.forEach((value, key) => task[key] = value);
-            }
-            let selected = document.querySelector('input[name="state"]:checked');
-            task.project= selected.value;
-            task.checklist= "no";
-            
+            let newTask = task;
             let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
-            taskList.push(task);
-            localStorage.setItem('taskList', JSON.stringify(taskList));
+            let index = taskList.map((element, index) => {
+                if(element.title == task.title){
+                    for (const [name,value] of data) {
+                        data.forEach((value, key) => {
+                            if (value!=''){
+                                newTask[key] = value;
+                            }
+                        });
+                        
+                    }
+                    taskList.splice(index,1,newTask);
+                    localStorage.setItem('taskList', JSON.stringify(taskList));
+                }
+             }
+            );
             let modal = document.getElementById("myModal");
             modal.style.display = "none";
             form.reset();
 
             const todos = document.querySelector(".todos");
             todos.querySelectorAll('*').forEach(n => n.remove());
-
+            let selected = document.querySelector('input[name="state"]:checked');
+            task.project= selected.value;
             for (let i = 0; i < taskList.length; i++) {
                 if(taskList[i].project == selected.value){
                     let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,taskList[i].checklist,taskList[i].project);
                     todos.appendChild(taskLoad(task));
                 }
             }
-
-
-            
         }else {
             console.log("Local storage doesnt work");
         }
     }
-
-
     return form;
 }
