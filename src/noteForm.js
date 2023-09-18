@@ -8,11 +8,13 @@ export default function noteForm(){
     form.setAttribute("method", "post");
     form.setAttribute("action", "");
     const title = document.createElement("input");
+    title.classList.add("title");
     title.setAttribute("type", "text");
     title.required=true;
     title.setAttribute("name", "title");
     title.setAttribute("placeholder", "Title");
     const details = document.createElement("input");
+    details.classList.add("details");
     details.setAttribute("type", "text");
     details.setAttribute("name", "details");
     details.setAttribute("placeholder", "Details:e.g power,groceries");

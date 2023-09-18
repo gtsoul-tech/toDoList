@@ -1,6 +1,7 @@
 .task{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: rgb(231, 231, 231);    
     padding: 10px;
     margin: 20px;
@@ -17,6 +18,7 @@
 
 .title{
     flex: 1;
+    justify-self: flex-start;
 }
 
 .complete{
@@ -28,6 +30,9 @@
 }
 .detailsContent{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     margin: 20px;
 }
 

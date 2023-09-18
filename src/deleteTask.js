@@ -8,7 +8,6 @@ export default function deleteTask(task){
         let taskList = JSON.parse(localStorage.getItem('taskList') || "[]");
         let index = taskList.map((element, index) => {
             if(element.title == task.title){
-                console.log(task);
                 taskList.splice(index,1);
                 localStorage.setItem('taskList', JSON.stringify(taskList));
             }

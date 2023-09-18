@@ -1,21 +1,9 @@
 .content{
     display: grid;
     grid-template-columns: 1fr 3fr;
+    height: 100%;
 }
 
-.navbar-button:hover, .navbar-button:active{
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.navbar-button:hover::before {
-    content: '//';
-}
-  
-.navbar-button{
-    width: 30px;
-    height: 30px;
-}
 
 
 label {
@@ -40,7 +28,65 @@ input[name="priority"]:checked+label::before {
 form{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
 }
 .modalnavbar{
     font-size: 1em;
+}
+
+.title, .details{
+    outline: none;
+    width: 200px;
+    height: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border-color: lightgreen;
+}
+
+input[type="date"] {
+    outline: none;
+    border-radius: 20px;
+    border-color: lightgreen;
+}
+input[type="submit"] {
+    outline: none;
+    width: 100px;
+    height: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border-color: lightgreen;
+}
+
+.greenPriority{
+    padding:10px;
+    color: green;
+    border: 1px solid green;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+.orangePriority{
+    padding:10px;
+    color: orange;
+    border: 1px solid orange;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+.redPriority{
+    padding:10px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 50px;
+}
+
+.editFormPost{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

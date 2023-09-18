@@ -9,6 +9,7 @@ export default function projectForm(){
     form.setAttribute("method", "post");
     form.setAttribute("action", "");
     const title = document.createElement("input");
+    title.classList.add("title");
     title.setAttribute("type", "text");
     title.required=true;
     title.setAttribute("name", "title");

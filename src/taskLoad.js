@@ -32,8 +32,14 @@ export default function taskLoad(task){
     details.classList.add("details");
     const detailsContent = document.createElement('div');
     detailsContent.classList.add("detailsContent");
-    detailsContent.textContent = task.details;
-    
+    for (let key in task) {
+        if(key!= "checklist"){
+            let info = document.createElement("div");
+            info.innerText = key.charAt(0).toUpperCase() + key.slice(1) + ":" + task[key];
+            detailsContent.appendChild(info);
+        }
+    }
+
     details.addEventListener("click", (e)=> {
         const modal_content = document.querySelector(".modal-content");
         const modal= document.querySelector(".modal");
@@ -99,7 +105,6 @@ export default function taskLoad(task){
                         task.checklist = "yes";
                         taskList.splice(index,1,task);
                     }
-                    console.log(taskList);
                     localStorage.setItem('taskList', JSON.stringify(taskList));
                 }else{
                     taskDOM.classList.remove("complete");
@@ -107,7 +112,6 @@ export default function taskLoad(task){
                         task.checklist = "no";
                         taskList.splice(index,1,task);
                     }
-                    console.log("123" + taskList);
                     localStorage.setItem('taskList', JSON.stringify(taskList));
                 }
                }

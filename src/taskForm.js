@@ -1,6 +1,5 @@
 import './form.css';
 import storageAvailable from './storageAvailable';
-import initialLoad from './initialLoad';
 import taskLoad from './taskLoad';
 import createTask from './task';
 export default function taskForm(){
@@ -11,19 +10,24 @@ export default function taskForm(){
     form.setAttribute("method", "post");
     form.setAttribute("action", "");
     const title = document.createElement("input");
+    title.classList.add('title');
     title.setAttribute("type", "text");
     title.required=true;
     title.setAttribute("name", "title");
     title.setAttribute("placeholder", "Title:Make bills");
     const details = document.createElement("input");
+    details.classList.add("details");
     details.setAttribute("type", "text");
     details.setAttribute("name", "details");
     details.setAttribute("placeholder", "Details:e.g power,groceries");
     details.required=true;
+    const dateDiv = document.createElement("div");
+
+    
     const dueDate = document.createElement("input");
     const labelDueDate = document.createElement("label");
     labelDueDate.setAttribute("for","dueDate");
-    labelDueDate.innerText="Due Date";
+    labelDueDate.innerText="Due Date:";
     
     dueDate.setAttribute("type", "date");
     dueDate.setAttribute("name", "dueDate");
@@ -32,11 +36,11 @@ export default function taskForm(){
     dueDate.setAttribute("min", "2023-09-02");
     dueDate.setAttribute("max", "2024-09-02");
     
+    dateDiv.appendChild(labelDueDate);
+    dateDiv.appendChild(dueDate);
     form.appendChild(title);
     form.appendChild(details);
-    form.appendChild(labelDueDate);
-    
-    form.appendChild(dueDate);
+    form.appendChild(dateDiv);
     
 
     const priority = {
@@ -44,7 +48,7 @@ export default function taskForm(){
         "Medium": false,
         "High": false,
     }
-
+    const radioButtons= document.createElement("div");
     for (let key in priority) {
         let label = document.createElement("label");
         label.innerText = key;
@@ -61,9 +65,21 @@ export default function taskForm(){
         input.setAttribute('id',key);
         input.classList.add("navbar-button");
         
-        form.appendChild(input);
-        form.appendChild(label);
+        switch(key) {
+            case "Low": 
+                label.classList.add("greenPriority");
+                break;
+            case "Medium":
+                label.classList.add("orangePriority");
+                break;
+            default:
+                label.classList.add("redPriority");
+        }
+
+        radioButtons.appendChild(input);
+        radioButtons.appendChild(label);
     }
+    form.appendChild(radioButtons);
     const submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
