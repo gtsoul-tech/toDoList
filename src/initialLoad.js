@@ -47,8 +47,8 @@ export default function initialLoad(){
     for (let key in data) {
         let label = document.createElement("label");
         label.innerText = key;
-        label.setAttribute('for',key);
         if(key!="Projects"){
+            label.setAttribute('for',key);
             let input = document.createElement("input");
             if(data[key] == true){
                 input.checked=true;
