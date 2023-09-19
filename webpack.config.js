@@ -19,6 +19,7 @@ module.exports = {
     deleteNote: './src/deleteNote.js',
     editNote: './src/editNote.js',
     show: './src/show.js',
+    initializeExamples: './src/initializeExamples.js',
   },
   devtool: 'inline-source-map',
   plugins: [
