@@ -1,7 +1,6 @@
 import './form.css';
 import storageAvailable from './storageAvailable';
-import taskLoad from './taskLoad';
-import createTask from './task';
+import show from './show';
 export default function editTaskForm(task){
 
     const form = document.createElement('form');
@@ -109,16 +108,9 @@ export default function editTaskForm(task){
             modal.style.display = "none";
             form.reset();
 
-            const todos = document.querySelector(".todos");
-            todos.querySelectorAll('*').forEach(n => n.remove());
             let selected = document.querySelector('input[name="state"]:checked');
             task.project= selected.value;
-            for (let i = 0; i < taskList.length; i++) {
-                if(taskList[i].project == selected.value){
-                    let task = createTask(taskList[i].title,taskList[i].details,taskList[i].dueDate,taskList[i].priority,taskList[i].checklist,taskList[i].project);
-                    todos.appendChild(taskLoad(task));
-                }
-            }
+            show(selected.value);
         }else {
             console.log("Local storage doesnt work");
         }

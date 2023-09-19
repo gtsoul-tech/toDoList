@@ -3,6 +3,7 @@ import './style.css';
 import Svg from './notebook.svg';
 import taskLoad from "./taskLoad";
 export default function initialLoad(){
+    document.body.querySelectorAll('*').forEach(n => n.remove());
     const startView = document.createElement('div');
     const header = document.createElement('div');
     header.classList.add("header");
@@ -109,5 +110,6 @@ export default function initialLoad(){
             todos.appendChild(taskLoad(task));
         }
     }
+    
     document.body.appendChild(startView);
 }

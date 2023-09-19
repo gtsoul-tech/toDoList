@@ -1,5 +1,6 @@
 import './form.css';
 import storageAvailable from './storageAvailable';
+import show from './show';
 export default function noteForm(){
 
     const form = document.createElement('form');
@@ -13,15 +14,15 @@ export default function noteForm(){
     title.required=true;
     title.setAttribute("name", "title");
     title.setAttribute("placeholder", "Title");
-    const details = document.createElement("input");
-    details.classList.add("details");
-    details.setAttribute("type", "text");
-    details.setAttribute("name", "details");
-    details.setAttribute("placeholder", "Details:e.g power,groceries");
-    details.required=true;
+    const description = document.createElement("input");
+    description.classList.add("details");
+    description.setAttribute("type", "text");
+    description.setAttribute("name", "description");
+    description.setAttribute("placeholder", "description:e.g power,groceries");
+    description.required=true;
     
     form.appendChild(title);
-    form.appendChild(details);
+    form.appendChild(description);
     
 
     const submit = document.createElement("input");
@@ -41,12 +42,21 @@ export default function noteForm(){
                 data.forEach((value, key) => note[key] = value);
             }
             let noteList = JSON.parse(localStorage.getItem('noteList') || "[]");
+
+            let currentdate = new Date();
+            note.id = currentdate.getDay() + "/" + currentdate.getMonth() 
+            + "/" + currentdate.getFullYear() + " @ " 
+            + currentdate.getHours() + ":" 
+            + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+
             noteList.push(note);
             localStorage.setItem('noteList', JSON.stringify(noteList));
-            initialLoad();
             let modal = document.getElementById("myModal");
             modal.style.display = "none";
             form.reset();
+            show("Notes");
+
         }else {
             console.log("Local storage doesnt work");
         }

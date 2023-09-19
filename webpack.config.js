@@ -16,6 +16,9 @@ module.exports = {
     storageAvailable: './src/storageAvailable.js',
     editTaskForm: './src/editTaskForm.js',
     deleteTask: './src/deleteTask.js',
+    deleteNote: './src/deleteNote.js',
+    editNote: './src/editNote.js',
+    show: './src/show.js',
   },
   devtool: 'inline-source-map',
   plugins: [

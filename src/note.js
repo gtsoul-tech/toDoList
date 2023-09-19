@@ -1,3 +1,3 @@
-export default function createNote(title,description){
-    return {title,description};
+export default function createNote(title,description,id){
+    return {title,description,id};
 }
