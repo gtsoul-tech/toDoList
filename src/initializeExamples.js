@@ -11,8 +11,8 @@ export default function initialLizeExamples(){
         if(localStorage.getItem('init')== null){
             localStorage.setItem('init', 'key');
             let task1 = createTask("Example Task","Details about this task and why i want to complete it","2023-10-19","High","no","Home");
-            let task2 = createTask("Example Task","Details about this task and why i want to complete it","2023-11-19","Low","yes","Home");
-            let task3 = createTask("Example Task","Details about this task and why i want to complete it","2023-09-19","Medium","yes","MyJavascriptProject");
+            let task2 = createTask("Example Task1","Details about this task and why i want to complete it","2023-11-19","Low","yes","Home");
+            let task3 = createTask("Example Task2","Details about this task and why i want to complete it","2023-09-19","Medium","yes","MyJavascriptProject");
             
             let project={}
             project.title="MyJavascriptProject";

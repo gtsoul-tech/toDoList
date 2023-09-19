@@ -4,7 +4,15 @@ import Svg from './notebook.svg';
 import taskLoad from "./taskLoad";
 export default function initialLoad(){
     document.body.querySelectorAll('*').forEach(n => n.remove());
+    document.body.classList.add("wallpaper");
+
+    const floater = document.createElement('div');
+    floater.classList.add("floater");
+
+
     const startView = document.createElement('div');
+    floater.append(startView);
+
     const header = document.createElement('div');
     header.classList.add("header");
     header.textContent = "To-Do List";
@@ -111,5 +119,5 @@ export default function initialLoad(){
         }
     }
     
-    document.body.appendChild(startView);
+    document.body.appendChild(floater);
 }

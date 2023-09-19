@@ -15,10 +15,10 @@ html, body, body > div {
 .header{
     display: flex;
     font-size: 2em;
-    background-color: aquamarine;
+    background-color: rgba(206,107,202,1);
     justify-content: center;
     border-style: solid;
-    border-color: aquamarine;
+    border-color: rgba(206,107,202,1);
 }
 .svg{
     width: 1em;
@@ -29,16 +29,20 @@ html, body, body > div {
 .content{
     display: grid;
     grid-template-columns: 1fr 3fr;
+    width: 60vw;
 }
 
 .navbar{
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: start;
     gap: 20px;
     border-right: 0.5px solid rgb(0, 0, 0);
-    background-color: rgb(177, 177, 177);
+    background-color: rgb(219, 219, 219);
+    text-shadow: 4px 4px 4px rgba(206,107,202,0.5);
+    height: auto;
     
 }
 .navbar-button:hover, .navbar-button:active{
@@ -64,7 +68,7 @@ html, body, body > div {
     height: 50px;
     border-radius:50%;
     text-align: center;
-    background-color: bisque;
+    background-color: rgba(206,107,202,1);
     margin: 10px;
     align-self: flex-start;
     box-shadow: 2px 5px 5px black;
@@ -114,15 +118,10 @@ input[type="radio"]:checked+label::before{
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 5px 5px 15px rgba(206,107,202,1);
     border: 2px solid black;
     border-radius: 20px;
-    height: 100%;
-    width: 80%; /* Could be more or less, depending on screen size */
-    min-width: 100px;
-    max-width: 500px;
-    min-height: 200px;
-    max-height: 200px;
+    width: 60%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -143,7 +142,7 @@ input[type="radio"]:checked+label::before{
 .noteDiv{
     margin: 0;
     padding: 0;
-    width: 80vw;
+    width: 40vw;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--card_width));
@@ -180,11 +179,29 @@ input[type="radio"]:checked+label::before{
 }
 .card input:nth-child(2) {
     padding-top: 20px;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(206,107,202,1);
 }
 
 .noteInput{
     outline: none;
     border: none;
     background: inherit;
+}
+
+.wallpaper{
+    background: url('./wallpaper.jpg');
+    background-size: 2000px auto;
+}
+
+.floater{
+    position: absolute;
+    top: 20%; 
+    left: 20%;
+    box-shadow: 5px 5px 30px rgba(206,107,202,1);
+    height: 523px;
+}
+.todos{
+    display: flex;
+    background: white;
+
 }

@@ -1,4 +1,3 @@
-
 import storageAvailable from "./storageAvailable";
 import createNote from "./note";
 import createTask from "./task";
