@@ -11,6 +11,7 @@ export default function initialLoad(){
 
 
     const startView = document.createElement('div');
+    startView.classList.add("startView");
     floater.append(startView);
 
     const header = document.createElement('div');

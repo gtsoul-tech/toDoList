@@ -20,6 +20,7 @@ html, body, body > div {
     border-style: solid;
     border-color: rgba(206,107,202,1);
     border-bottom: 1px solid black;
+    min-width: 720px;
 }
 .svg{
     width: 1em;
@@ -44,7 +45,7 @@ html, body, body > div {
     background-color: rgb(219, 219, 219);
     text-shadow: 4px 4px 4px rgba(206,107,202,0.5);
     height: auto;
-    
+    min-width: 159px;
 }
 .navbar-button:hover, .navbar-button:active{
     font-size: 1rem;
@@ -201,10 +202,18 @@ input[type="radio"]:checked+label::before{
     box-shadow: 5px 5px 30px rgba(206,107,202,1);
     height: 523px;
     border: 1px solid black;
+    display: flex;
 }
 .todos{
     display: flex;
     flex-direction: column;
     background: white;
+    min-width: 544px;
 
+}
+
+.startView{
+    display: grid;
+    grid-template-columns: 4fr;
+    grid-template-rows: 0.5fr 4fr;
 }
